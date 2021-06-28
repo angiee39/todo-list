@@ -1,11 +1,13 @@
 let projects = ['project1', 'project2', 'project3']
 
 const project = title => {
-  const changeTitle = () => {}
-  const addProject = () => {}
-  const removeProject = () => {}
+  const addProject = (newProject) => {
+    projects.push(newProject)
+  };
+  const changeTitle = (title) => {};
+  const removeProject = (title) => {};
 
-  return {title, changeTitle, addProject, removeProject}
+  return {title, addProject, changeTitle, removeProject}
 }
 
-export default projects
+export { projects, project }
