@@ -12,7 +12,8 @@ const renderHome = () => {
   const tasks = document.createElement('div')
   tasks.innerHTML = ""
   for (let i = 0; i < t.length; i++) {
-    tasks.innerHTML += `<ul> ${t[i]} </ul>`
+    tasks.innerHTML += `<ul class="flex" id="li${i}"><input id="taskCheck${i}"type="checkbox">
+    <div id="task${i}">${t[i].title}</div></ul>`
   }
   div.appendChild(tasks)
 
@@ -25,12 +26,19 @@ const renderHome = () => {
   taskForm.setAttribute('id', 'taskForm')
   taskForm.classList.add('hide')
 
-  const input = document.createElement('input')
-  input.setAttribute('id', 'tinput')
-  input.setAttribute('type', 'text')
-  input.setAttribute('placeholder', 'Task name')
-  input.setAttribute('autofocus', 'on')
-  taskForm.appendChild(input)
+  const title = document.createElement('input')
+  title.setAttribute('id', 'tinput')
+  title.setAttribute('type', 'text')
+  title.setAttribute('placeholder', 'Task name')
+  title.setAttribute('autofocus', 'on')
+  taskForm.appendChild(title)
+
+  const description = document.createElement('input')
+  description.setAttribute('id', 'description')
+  description.setAttribute('type', 'text')
+  description.setAttribute('placeholder', 'Description')
+  taskForm.appendChild(description)
+
   const button = document.createElement('button')
   button.setAttribute('id', 'addTBtn')
   button.textContent = "Add"

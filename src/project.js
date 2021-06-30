@@ -1,4 +1,4 @@
-let projects = ['project1', 'project2', 'project3']
+let projects = []
 
 const project = title => {
   const addProject = (newProject) => {

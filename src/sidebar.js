@@ -13,7 +13,7 @@ const renderSideBar = () => {
   const projects = document.createElement('div')
   projects.innerHTML = ""
   for (let i = 0; i < p.length; i++) {
-    projects.innerHTML += `<ul> ${p[i]} </ul>`
+    projects.innerHTML += `<ul> ${p[i].title} </ul>`
   }
   div.appendChild(projects)
 
@@ -25,7 +25,7 @@ const renderSideBar = () => {
   const projectForm = document.createElement('div')
   projectForm.setAttribute('id', 'projectForm')
   projectForm.classList.add('hide')
-  
+
   const input = document.createElement('input')
   input.setAttribute('id', 'pinput')
   input.setAttribute('type', 'text')

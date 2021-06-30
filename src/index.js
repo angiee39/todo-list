@@ -3,7 +3,7 @@ import './style.css';
 import { renderSideBar } from './sidebar'
 import renderHome from './home'
 import { project } from './project';
-import { task } from './task'
+import { task, tasks } from './task'
 
 
 const header = document.getElementById('header')
@@ -31,6 +31,7 @@ function renderContent() {
   right.appendChild(renderHome())
   readyAddProject()
   readyAddTask() 
+  readyTasks()
 }
 renderContent()
 
@@ -63,7 +64,8 @@ function readyAddTask() {
     const addBtn = document.getElementById('addTBtn')
     addBtn.addEventListener('click', (e) => {
       const taskTitle = document.getElementById('tinput').value
-      const newTask = task(taskTitle)
+      const taskDescription = document.getElementById('description').value
+      const newTask = task(taskTitle, taskDescription)
       newTask.addTask(newTask)
       taskForm.classList.add('hide')
       btn.classList.remove('hide')
@@ -73,3 +75,36 @@ function readyAddTask() {
   });
 }
 
+function readyTasks() {
+  for (let i = 0; i < tasks.length; i++) {
+    const btn = document.getElementById(`task${i}`)
+    const li = document.getElementById(`li${i}`)
+    const div = tasks[i].viewTask(tasks[i])
+    div.classList.add('hide')
+    li.after(div)
+
+    btn.addEventListener('click', () => {
+      if (tasks[i].expand === false) {
+        div.classList.remove('hide')
+        tasks[i].expand = true
+      } else {
+        div.classList.add('hide')
+        tasks[i].expand = true
+      }
+    });
+  }
+}
+
+function readyProjects() {
+
+}
+
+/* To-do
+- Make tasks display details below their name when clicked on their name
+- Connect tasks to their projects
+- Connect checkbox to the task
+- Make projects show their tasks on the right when clicked on them
+
+- Add remaning features to tasks and projects
+- Make better UI
+*/
